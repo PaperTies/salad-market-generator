@@ -1,0 +1,42 @@
+{
+  "name": "salad-market-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "deploy": "gh-pages -d dist",
+    "build": "rm -rf dist && webpack --config ./webpack.config.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-deploy": "npm test"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaperTies/salad-market-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PaperTies/salad-market-generator/issues"
+  },
+  "homepage": "https://github.com/PaperTies/salad-market-generator#readme",
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.0.5",
+    "gh-pages": "^2.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.3.1",
+    "webpack": "^4.29.4",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-pipeline-operator": "^7.3.2",
+    "@babel/polyfill": "^7.2.5"
+  }
+}
