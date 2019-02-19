@@ -38,18 +38,21 @@ function getRandomArrayItems(arr, amount) {
 }
 
 function createNewSalad() {
+  const maxComponents = 6;
+  const basesAmount = getRandomInt(1, 3);
+  const dressingsAmount = 1;
+  const ingredientsAmount = maxComponents - basesAmount;
+
   bases
-    |> getRandomArrayItems(#, getRandomInt(1, 3))
+    |> getRandomArrayItems(#, basesAmount)
     |> #.join('\n')
     |> basesSection.replaceContent;
-  
   dressings
-    |> getRandomArrayItems(#, 1)
+    |> getRandomArrayItems(#, dressingsAmount)
     |> #.join('\n')
     |> dressingSection.replaceContent;
-
   ingredients
-    |> getRandomArrayItems(#, getRandomInt(4, 7))
+    |> getRandomArrayItems(#, ingredientsAmount)
     |> #.join('\n')
     |> ingredientsSection.replaceContent;
 }
