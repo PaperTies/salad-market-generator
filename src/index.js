@@ -7,6 +7,19 @@ import getRandomArrayValue from './libs/getRandomArrayValue';
 
 const appContainer = document.getElementById('app');
 
+const title = document.createElement('h1');
+title.innerText = 'Salad Market Generator';
+appContainer.appendChild(title);
+
+const basesSection = createSection(appContainer, 'Bases');
+const ingredientsSection = createSection(appContainer, 'Ingredients');
+const dressingSection = createSection(appContainer, 'Dressing');
+
+const newSaladButton = document.createElement('button');
+newSaladButton.addEventListener('click', createNewSalad);
+newSaladButton.innerText = 'Generate New Salad';
+appContainer.appendChild(newSaladButton);
+
 function createSection(parent, titleText) {
   const container = document.createElement('div');
   parent.appendChild(container);
@@ -24,14 +37,6 @@ function createSection(parent, titleText) {
     },
   };
 }
-
-const title = document.createElement('h1');
-title.innerText = 'Salad Market Generator';
-appContainer.appendChild(title);
-
-const basesSection = createSection(appContainer, 'Bases');
-const ingredientsSection = createSection(appContainer, 'Ingredients');
-const dressingSection = createSection(appContainer, 'Dressing');
 
 function getRandomArrayItems(arr, amount) {
   return Array.from({ length: amount }, () => getRandomArrayValue(arr));
@@ -56,5 +61,7 @@ function createNewSalad() {
     |> #.join('\n')
     |> ingredientsSection.replaceContent;
 }
+
+
 
 createNewSalad();
