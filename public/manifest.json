@@ -1,0 +1,17 @@
+{
+  "short_name": "Salad Market Generator",
+  "manifest_version": 2,
+  "name": "Salad Market Generator",
+  "description": "Generate your salad randomly!",
+  "version": "0.0.1",
+  "browser_action": {
+      "default_popup": "./index.html",
+      "default_title": "Salad Market Generator extension"
+  },
+  "icons":  {
+    "16": "images/logo-16.png",
+    "32": "images/logo-32.png",
+    "48": "images/logo-48.png",
+    "70": "images/logo-70.png" 
+  }
+}
