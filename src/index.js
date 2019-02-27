@@ -5,23 +5,33 @@ import dressings from './salad/dressings';
 import getRandomInt from './libs/getRandomInt';
 import getRandomArrayValue from './libs/getRandomArrayValue';
 
+import './styles.css';
+
 const appContainer = document.getElementById('app');
 
-const title = document.createElement('h1');
-title.innerText = 'Salad Market Generator';
-appContainer.appendChild(title);
+const header = document.createElement('header');
 
-const basesSection = createSection(appContainer, 'Bases');
-const ingredientsSection = createSection(appContainer, 'Ingredients');
-const dressingSection = createSection(appContainer, 'Dressing');
+const title = document.createElement('h1');
+title.innerText = '🥗 Salad Market Generator';
+
+const generatorWrapper = document.createElement('div');
+generatorWrapper.classList.add('generator-wrapper');
+
+header.appendChild(title);
+appContainer.appendChild(header);
+appContainer.appendChild(generatorWrapper);
+
+const basesSection = createSection(generatorWrapper, 'Bases');
+const ingredientsSection = createSection(generatorWrapper, 'Ingredients');
+const dressingSection = createSection(generatorWrapper, 'Dressing');
 
 const newSaladButton = document.createElement('button');
 newSaladButton.addEventListener('click', createNewSalad);
 newSaladButton.innerText = 'Generate New Salad';
-appContainer.appendChild(newSaladButton);
+generatorWrapper.appendChild(newSaladButton);
 
 function createSection(parent, titleText) {
-  const container = document.createElement('div');
+  const container = document.createElement('section');
   parent.appendChild(container);
 
   const title = document.createElement('h2');
