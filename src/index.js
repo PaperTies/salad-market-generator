@@ -30,6 +30,21 @@ newSaladButton.addEventListener('click', createNewSalad);
 newSaladButton.innerText = 'Generate New Salad';
 generatorWrapper.appendChild(newSaladButton);
 
+function removeNodeChildren(node) {
+  while (node.firstChild) {
+    node.removeChild(node.firstChild);
+  }
+}
+
+function createIngredientNodeList(newItemsArray) {
+  return newItemsArray.map(item => {
+    const ingredient = document.createElement('div');
+
+    ingredient.innerText = item
+    return ingredient;
+  })
+}
+
 function createSection(parent, titleText) {
   const container = document.createElement('section');
   parent.appendChild(container);
@@ -38,12 +53,15 @@ function createSection(parent, titleText) {
   title.innerText = titleText;
   container.appendChild(title);
 
-  const content = document.createElement('p');
+  const content = document.createElement('article');
+  
   container.appendChild(content);
 
   return {
-    replaceContent(newContentText) {
-      content.innerText = newContentText;
+    replaceContent(nodeList) {
+      removeNodeChildren(content);
+
+      nodeList.forEach(node =>content.appendChild(node))
     },
   };
 }
@@ -60,15 +78,15 @@ function createNewSalad() {
 
   bases
     |> getRandomArrayItems(#, basesAmount)
-    |> #.join('\n')
+    |> createIngredientNodeList
     |> basesSection.replaceContent;
   dressings
     |> getRandomArrayItems(#, dressingsAmount)
-    |> #.join('\n')
+    |> createIngredientNodeList
     |> dressingSection.replaceContent;
   ingredients
     |> getRandomArrayItems(#, ingredientsAmount)
-    |> #.join('\n')
+    |> createIngredientNodeList
     |> ingredientsSection.replaceContent;
 }
 
